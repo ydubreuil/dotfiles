@@ -1,0 +1,66 @@
+[core]
+	editor = vim
+	excludesfile=~/.gitignore
+
+[user]
+	name = Yoann Dubreuil
+
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+
+[alias]
+	##### Basic aliases
+	# Long status
+	st = status
+
+	# Short status
+	s = status -s
+
+	# Show branches
+	br = branch
+	bra = branch -a
+	brr = branch -r
+
+	# Show branches with commit message
+	sb = show-branch
+
+	# Commit
+	ci = commit
+
+	# Checkout
+	co = checkout
+
+	# log
+	l = log --pretty=oneline --abbrev-commit
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+
+	# Show modified lines in the index
+	staged = diff --cached
+
+	# work with submodule
+	ss = submodule summary
+	subfetch = submodule foreach 'git fetch'
+	subrebase = submodule foreach 'git fetch && git rebase || true'
+	subcheckout-master = submodule foreach 'git checkout master || true'
+	subcheckout-develop = submodule foreach 'git checkout develop || true'
+	submodule-remove =  "!f(){ git rm --cached \"$1\";rm -r \"$1\";git config -f .gitmodules --remove-section \"submodule.$1\";git config -f .git/config --remove-section \"submodule.$1\";git add .gitmodules; }; f"
+
+[merge]
+	conflitstyle = diff3
+	tool = kdiff3
+
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+
+[push]
+	default = tracking
+
+[branch]
+	autosetuprebase = always
+
+[http]
+	sslVerify = false

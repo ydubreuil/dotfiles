@@ -1,0 +1,13 @@
+.svn
+*~
+*.old
+*.orig
+
+.idea
+
+.project
+.classpath
+.settings
+.externalToolBuilders
+
+target
