@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-FILES="bash_aliases bashrc gitconfig gitignore inputrc pythonstartup tmux.conf"
+FILES="bashrc bash.d dependencies gitconfig gitignore inputrc liquidprompt.theme liquidpromptrc pythonstartup tmux.conf"
 
 # absolute path
 HERE=$(dirname $(readlink -f $0))
