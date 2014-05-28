@@ -7,8 +7,17 @@ FILES="bashrc bash.d dependencies gitconfig gitignore inputrc liquidprompt.theme
 HERE=$(dirname $(readlink -f $0))
 
 for FILE in $FILES; do
-  if [[ ! -h "$HOME/.$FILE" ]]; then
-    [[ -f "$HOME/.$FILE" ]] && rm "$HOME/.$FILE"
-    ln -s "$HERE/$FILE" "$HOME/.$FILE"
+  source=$HERE/$FILE
+  target=$HOME/.$FILE
+  
+  if [[ -d "$target" && ! -h "$target" ]]; then
+    echo "skipping directory $target"
+    continue
   fi
+
+  [[ "$(readlink -f $source)" == "$(readlink -f $target)" ]] && continue
+  echo "linking $source to $target"
+  
+  rm "$HOME/.$FILE"
+  ln -s "$HERE/$FILE" "$HOME/.$FILE"
 done
