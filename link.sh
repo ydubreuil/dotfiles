@@ -18,6 +18,6 @@ for FILE in $FILES; do
   [[ "$(readlink -f $source)" == "$(readlink -f $target)" ]] && continue
   echo "linking $source to $target"
   
-  rm "$HOME/.$FILE"
+  [[ -r "$target" ]] && rm "$HOME/.$FILE"
   ln -s "$HERE/$FILE" "$HOME/.$FILE"
 done
