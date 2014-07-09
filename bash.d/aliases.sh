@@ -52,3 +52,12 @@ ssh() {
    command ssh "${args[@]}"
 }
 
+tabandstrip() {
+    local args=( "${@}" )
+    local i
+    for (( i=0; i<${#args[@]}; i++ )) ; do
+        local filename=${args[i]}
+        unexpand -t 4 -a "$filename" | sed -E "s/[[:space:]]$//" | sponge "$filename"
+    done
+}
+
