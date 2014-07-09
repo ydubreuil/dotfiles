@@ -18,9 +18,9 @@ alias ...='cd ../..'
 
 init_dot_aliases() {
     local slashes
-    slashes=
+    slashes="../.."
 
-    for c in $(seq 4 10)
+    for c in $(seq 3 10)
     do
         slashes="../${slashes}"
         alias .$c="cd ${slashes}"
