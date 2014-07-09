@@ -33,3 +33,22 @@ newpass() {
 
     apg -a 1 -m $length -x $length -n 1 -E \'\"
 }
+
+
+ssh() {
+   local args=( "${@}" )
+   local i x
+   for (( i=0; i<${#args[@]}; i++ )) ; do
+     x=${args[i]}
+     [[ -z ${x%%-[bcDeFIiLlmOopRSWw]} ]] && (( i++ )) && continue
+     [[ -z ${x%%-*} ]] && continue
+     x=${x#http://}
+     x=${x#https://}
+     x=${x/@http:\/\//@}
+     x=${x/@https:\/\//@}
+     args[i]=${x}
+     break
+   done
+   command ssh "${args[@]}"
+}
+
