@@ -64,6 +64,27 @@ tabandstrip() {
   done
 }
 
+# do something on all git repositories found under the working directory
+# example: allgit grep mystring
+gitall() {
+  find * -type d -name .git | \
+    while read repo; do
+      (cd $(dirname $repo); git "$@")
+    done
+}
+
+# do something on all git repositories found under the working directory
+# example: allgit grep mystring
+gitallv() {
+  find * -type d -name .git | \
+    while read repo; do
+      local repo_dir=$(dirname $repo)
+      echo "==> in $repo_dir"
+      (cd $repo_dir; git "$@")
+    done
+}
+
+
 psme() {
   ps awwf -U $(id -u)
 }
