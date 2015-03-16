@@ -1,0 +1,5 @@
+style "gtkcompact" {
+ GtkTreeView::vertical-separator=0
+ GtkTreeView::horizontal-separator=0
+}
+class "GtkWidget" style "gtkcompact"

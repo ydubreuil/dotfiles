@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-FILES="bashrc bash.d dependencies gitconfig gitignore inputrc liquidprompt.theme liquidpromptrc pythonstartup tmux.conf vim vimrc"
+FILES="bashrc bash.d dependencies gitconfig gitignore gtkrc-2.0 inputrc liquidprompt.theme liquidpromptrc pythonstartup tmux.conf vim vimrc"
 
 # absolute path
 HERE=$(dirname $(readlink -f $0))
