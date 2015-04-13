@@ -1,1 +1,0 @@
-export MAVEN_OPTS="-XX:+TieredCompilation -XX:TieredStopAtLevel=1"
