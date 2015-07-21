@@ -1,9 +1,15 @@
-IDEA_JDK=/usr/lib/jvm/java-8-jdk
+# WARNING: tricky format !
+#
+# VARNAME <TAB> DEFAULT="value"
+#
+
+IDEA_JDK	DEFAULT="/usr/lib/jvm/java-8-jdk"
 
 # it's ONLY ok on a desktop of a java developer with 8 CPU cores!
 # see here: https://issues.apache.org/jira/browse/HADOOP-7154
-MALLOC_ARENA_MAX=2
+MALLOC_ARENA_MAX	DEFAULT="2"
 
-SBT_OPTS=-Xms512M -Xmx1536M -Xss1M -XX:+TieredCompilation -XX:TieredStopAtLevel=1
-MAVEN_OPTS=-Xmx1536M -XX:+TieredCompilation -XX:TieredStopAtLevel=1
+SBT_OPTS	DEFAULT="-Xms512M -Xmx1536M -Xss1M -XX:+TieredCompilation -XX:TieredStopAtLevel=1"
+
+MAVEN_OPTS	DEFAULT="-Xmx1536M -XX:+TieredCompilation -XX:TieredStopAtLevel=1"
 
