@@ -89,3 +89,6 @@ psme() {
   ps awwf -U $(id -u)
 }
 
+alias open='gedit'
+alias openw='gedit --new-window'
+

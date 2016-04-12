@@ -4,6 +4,7 @@
 
 [user]
 	name = Yoann Dubreuil
+	signingkey = 72422C96
 
 [color]
 	diff = auto
@@ -62,5 +63,5 @@
 [branch]
 	autosetuprebase = always
 
-[http]
-	sslVerify = false
+[credential]
+	helper = /usr/lib/git-core/git-credential-gnome-keyring
