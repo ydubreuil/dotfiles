@@ -13,5 +13,5 @@ SBT_OPTS	DEFAULT="-Xms512M -Xmx1536M -Xss1M -XX:+TieredCompilation -XX:TieredSto
 
 MAVEN_OPTS	DEFAULT="-Xmx1536M -XX:+TieredCompilation -XX:TieredStopAtLevel=1"
 
-SSH_AUTH_SOCK DEFAULT="/home/dudu/.gnupg/S.gpg-agent.ssh"
+SSH_AUTH_SOCK	DEFAULT="/home/dudu/.gnupg/S.gpg-agent.ssh"
 
