@@ -5,6 +5,7 @@
 [user]
 	name = Yoann Dubreuil
 	signingkey = 72422C96
+	email = yoann.dubreuil@gmail.com
 
 [color]
 	diff = auto
@@ -18,20 +19,17 @@
 
 	# Short status
 	s = status -s
+  d = diff
 
 	# Show branches
 	br = branch
 	bra = branch -a
 	brr = branch -r
 
+  fixdate = "!git commit --amend --date=\"$(date -R)\" --author='Yoann Dubreuil <yoann.dubreuil@gmail.com>'"
+
 	# Show branches with commit message
 	sb = show-branch
-
-	# Commit
-	ci = commit
-
-	# Checkout
-	co = checkout
 
 	# log
 	l = log --pretty=oneline --abbrev-commit
@@ -39,6 +37,9 @@
 
 	# Show modified lines in the index
 	staged = diff --cached
+
+  # Pull and stash
+  spull = pull --rebase --autostash
 
 	# work with submodule
 	ss = submodule summary
@@ -50,6 +51,7 @@
 
 [merge]
 	conflitstyle = diff3
+	tool = kdiff3
 	tool = kdiff3
 
 [color "branch"]
@@ -65,3 +67,12 @@
 
 [credential]
 	helper = /usr/lib/git-core/git-credential-gnome-keyring
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[http "https://gopkg.in"]
+	followRedirects = true
+[url "git@github.com:"]
+	insteadOf = https://github.com/

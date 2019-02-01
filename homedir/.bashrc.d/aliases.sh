@@ -31,8 +31,8 @@ init_dot_aliases() {
 
 # generate new password
 newpass() {
-  local length; length=$1; [ -z "$length" ] && length=12
-  apg -a 1 -m $length -x $length -n 1 -E \'\"
+  local length; length=$1; [ -z "$length" ] && length=32
+  apg -M SNCL -E "\'\;\",:" -s -m $length -x $length -n 1
 }
 
 
@@ -65,7 +65,7 @@ tabandstrip() {
 }
 
 # do something on all git repositories found under the working directory
-# example: allgit grep mystring
+# example: gitall grep mystring
 gitall() {
   find * -type d -name .git | \
     while read repo; do
@@ -84,11 +84,9 @@ gitallv() {
     done
 }
 
-
 psme() {
   ps awwf -U $(id -u)
 }
 
 alias open='gedit'
 alias openw='gedit --new-window'
-

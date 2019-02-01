@@ -1,23 +1,37 @@
 #!/bin/bash
 set -e
 
-FILES="bashrc bash.d dependencies gitconfig gitignore gtkrc-2.0 inputrc liquidprompt.theme liquidpromptrc pam_environment pythonstartup tmux.conf vim vimrc"
+HERE="$(dirname "$(readlink -f "$0")")"
 
-# absolute path
-HERE=$(dirname $(readlink -f $0))
+now=$(date +"%Y.%m.%d.%H.%M.%S")
+pushd $HERE/homedir > /dev/null 2>&1
 
-for FILE in $FILES; do
-  source=$HERE/$FILE
-  target=$HOME/.$FILE
-  
-  if [[ -d "$target" && ! -h "$target" ]]; then
-    echo "skipping directory $target"
+for file in .*; do
+  if [[ $file == "." || $file == ".." ]]; then
     continue
   fi
 
-  [[ "$(readlink -f $source)" == "$(readlink -f $target)" ]] && continue
-  echo "linking $source to $target"
-  
-  [[ -r "$target" ]] && rm "$HOME/.$FILE"
-  ln -s "$HERE/$FILE" "$HOME/.$FILE"
+  source="$HERE/homedir/$file"
+  target="$HOME/$file"
+
+  # skip existing links
+  if [[ "$(readlink -f "$source")" == "$(readlink -f "$target")" ]]; then
+    continue
+  fi
+
+  # if the target file already exists:
+  if [[ -e ~/$file ]]; then
+    backup="$HOME/.dotfiles_backup/$now/$file"
+    mkdir -p "$HOME/.dotfiles_backup/$now"
+    mv "$target" "$backup"
+    echo "backup saved as $backup"
+  fi
+  # symlink might still exist
+  unlink ~/$file > /dev/null 2>&1 || true
+  # create the link
+  ln -sf "$source" "$target"
+  echo "linked $source to $target"
 done
+
+popd > /dev/null 2>&1
+
