@@ -90,3 +90,6 @@ psme() {
 
 alias open='gedit'
 alias openw='gedit --new-window'
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
+
