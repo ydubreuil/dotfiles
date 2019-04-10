@@ -26,7 +26,7 @@
 	bra = branch -a
 	brr = branch -r
 
-  fixdate = "!git commit --amend --date=\"$(date -R)\" --author='Yoann Dubreuil <yoann.dubreuil@gmail.com>'"
+	fixdate = "!git commit --amend --date=\"$(date -R)\" --author='Yoann Dubreuil <yoann.dubreuil@gmail.com>'"
 
 	# Show branches with commit message
 	sb = show-branch
@@ -38,8 +38,8 @@
 	# Show modified lines in the index
 	staged = diff --cached
 
-  # Pull and stash
-  spull = pull --rebase --autostash
+	# Pull and stash
+	spull = pull --rebase --autostash
 
 	# work with submodule
 	ss = submodule summary
