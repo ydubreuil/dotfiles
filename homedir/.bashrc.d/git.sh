@@ -16,3 +16,21 @@ gclone() {
   git branch -f main origin/main
   git worktree add main main
 }
+
+gpr() {
+	local pr_id="$1"
+	if [[ -z "$pr_id" ]]; then
+		return
+	fi
+	if ! git rev-parse --show-toplevel ; then
+		echo "Can't fetch PR, not a git repo"
+		return
+	fi
+
+	cd "$(git rev-parse --show-toplevel)"
+	local repo="$(basename "$(pwd)")"
+	local worktree="../PR-${pr_id}"
+	git worktree add "${worktree}" -d
+	cd "$worktree"
+	gh pr checkout "$pr_id"
+}
