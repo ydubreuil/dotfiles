@@ -1,3 +1,0 @@
-[submodule "homedir/.bashrc.d/dependencies/liquidprompt"]
-	path = homedir/.bashrc.d/dependencies/liquidprompt
-	url = https://github.com/nojhan/liquidprompt
