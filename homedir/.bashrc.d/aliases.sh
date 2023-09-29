@@ -94,9 +94,11 @@ alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 
 alias k='kubectl'
+__load_completion kubectl
 complete -o default -F __start_kubectl k
 
 alias kx='kubectx'
+__load_completion kubectx
 complete -F _kube_contexts kx
 
 cdr() {
