@@ -93,3 +93,12 @@ alias openw='gedit --new-window'
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 
+alias k='kubectl'
+complete -o default -F __start_kubectl k
+
+alias kx='kubectx'
+complete -F _kube_contexts kx
+
+cdr() {
+	cd "$(git rev-parse --show-toplevel)"
+}
